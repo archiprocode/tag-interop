@@ -13,6 +13,7 @@ namespace Cache\TagInterop;
 
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
+use Psr\Cache\CacheItemInterface;
 
 /**
  * Interface for invalidating cached items using tags. This interface is a soon-to-be-PSR.
@@ -49,12 +50,12 @@ interface TaggableCacheItemPoolInterface extends CacheItemPoolInterface
      *
      * @return TaggableCacheItemInterface
      */
-    public function getItem($key);
+    public function getItem(string $key): CacheItemInterface;
 
     /**
      * {@inheritdoc}
      *
-     * @return array|\Traversable|TaggableCacheItemInterface[]
+     * @return iterable
      */
-    public function getItems(array $keys = []);
+    public function getItems(array $keys = []): iterable;
 }
